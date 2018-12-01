@@ -1,24 +1,26 @@
-const user = require('../models/users');
+const User = require('../models/User');
 const userController = {};
 
 
 
 userController.index = async function(req,res,next) {
 
-    let user = await user.find();
+    let user = await User.find();
     return res.status(200).json(user)}
 
 userController.findUser = async function(req,res,next){
     let {id}= req.params;
-    let user = await user.findById(id).catch(err=>{
+    let user = await User.findById(id).catch(err=>{
         return next(res);});
         return res.status(200).json(user);}
 
 userController.stores = async function(req,res,next){
-    let user= new user;
-    user.nombre = req.body.user;
-    user.apellido = req.body.user;
-    user.celular = re.body.user;
+    let user= new User({
+        nombre : req.body.Nombre,
+        apellido : req.body.Apellidos,
+        celular : req.body.Celular
+    });
+  
     try{
         await user.save();
         return res.status(200).json({"mensaje": "usuario agregado bb"});}
