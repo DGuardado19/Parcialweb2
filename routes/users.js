@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/', userController.index);
 router.get('/:id', userController.findUser);
+//router.post('/', userController.store);
 router.put('/:id', userController.update);
 router.delete('/:id', userController.delete)
 
