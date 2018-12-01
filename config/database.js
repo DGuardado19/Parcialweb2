@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {mongodb}= require('./keys.js');
+const {mongodb}= require('./keys');
 
 mongoose.connect(mongodb.URI,{
 useCreateIndex:true,
