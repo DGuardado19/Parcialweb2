@@ -23,7 +23,7 @@ userController.stores = async function(req,res,next){
   
     try{
         await user.save();
-        return res.status(200).json({"mensaje": "usuario agregado bb"});}
+        return res.status(200).json({"mensaje": "usuario agregado "});}
 
         catch(err){
             return res.status(500).json({err:err, menssage: "NO se pudo agregar amigo"});
