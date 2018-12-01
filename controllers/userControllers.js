@@ -18,6 +18,7 @@ userController.stores = async function(req,res,next){
     let user= new user;
     user.nombre = req.body.user;
     user.apellido = req.body.user;
+    user.celular = re.body.user;
     try{
         await user.save();
         return res.status(200).json({"mensaje": "usuario agregado bb"});}
@@ -26,3 +27,23 @@ userController.stores = async function(req,res,next){
             return res.status(500).json({err:err, menssage: "NO se pudo agregar amigo"});
         }
 }
+
+userController.update = async function(req,res,next){
+    let {id}= req.params;
+    let user ={nombre: req.body.user, apellido: req.body.user, celular: req.body.user}
+    try {
+        await user.update({
+            _id:id
+        }, user);
+        res.status(200).json({err:err, menssage: "Actualizado"})
+    }
+    catch(err){ return re.status(500).json({ err:err})};
+}
+userController.delete = async function(req,res,next){
+    let {id}= req.params;
+    await user.remove ({_id:id});
+    res.status(200).json({
+        "mensaje": "COntacto eliminado"  });
+}
+
+module.exports = userController;
